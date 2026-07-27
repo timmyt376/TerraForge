@@ -693,7 +693,7 @@ class TerraForgeLauncher:
             try:
                 req = urllib.request.Request(
                     self.UPDATE_CHECK_URL,
-                    headers={"User-Agent": "TerraForgeLauncher/2.3.0", "Accept": "application/vnd.github+json"}
+                    headers={"User-Agent": "TerraForgeLauncher/2.3.3", "Accept": "application/vnd.github+json"}
                 )
                 with urllib.request.urlopen(req, timeout=8) as resp:
                     data = json.loads(resp.read())
