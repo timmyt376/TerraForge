@@ -7,7 +7,7 @@ from tkinter import ttk, font as tkfont, messagebox
 import subprocess, os, json, random, glob
 import urllib.request, threading
 
-VERSION = "2.1"
+VERSION = "2.2"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LUANTI_DIR = os.path.join(BASE_DIR, "luanti-5.10.0-win64", "bin")
@@ -158,21 +158,31 @@ class TerraForgeLauncher:
             self.config["last_world"] = world_name
             self._save_config()
 
-            # Create watcher batch that: launches game, waits, reopens launcher
-            watcher = os.path.join(BASE_DIR, ".launch_watcher.bat")
-            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
-            fullscreen_flag = self.config["window_mode"] == "fullscreen"
+            # Write a tiny Python watcher: launch game, wait, reopen launcher
+            watcher = os.path.join(BASE_DIR, ".launch_watcher.py")
             with open(watcher, "w") as f:
-                f.write(f"""@echo off
-REM TerraForge launch watcher
-cd /d "{LUANTI_DIR}"
-"luanti.exe" --gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}" {"" if not fullscreen_flag else "--fullscreen"}
-start "" "{launcher_bat}"
-del "%~f0"
+                f.write(f"""import subprocess, os, sys, time
+base = os.path.dirname(os.path.abspath(__file__))
+luanti = os.path.join(base, "luanti-5.10.0-win64", "bin", "luanti.exe")
+args = [luanti, "--gameid", "terraforge", "--world", r"{wdir}", "--go", "--name", "{self.config["username"]}"]
+if {"true" if self.config["window_mode"] == "fullscreen" else "False"}:
+    args.append("--fullscreen")
+time.sleep(1.5)
+ret = subprocess.run(args, cwd=os.path.dirname(luanti))
+if ret.returncode != 0:
+    with open(os.path.join(base, "launcher_crash.log"), "w") as lf:
+        lf.write(f"Luanti exited with code {ret.returncode}\\n")
+subprocess.Popen([r"{os.path.join(BASE_DIR, 'start_terraforge.bat')}"], shell=True)
+time.sleep(0.5)
+try: os.remove(__file__)
+except: pass
 """)
-            # Launch watcher, then close launcher
-            subprocess.Popen(f'start "" "{watcher}"', shell=True)
-            self.root.after(1000, self.root.destroy)
+            # Launch watcher with pythonw to avoid console window
+            subprocess.Popen(
+                [sys.executable.replace("python.exe", "pythonw.exe") or "pythonw", watcher],
+                cwd=BASE_DIR, creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0
+            )
+            self.root.after(2000, self.root.destroy)
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
@@ -305,8 +315,6 @@ del "%~f0"
             for i, (text, cmd, c, hc) in enumerate(buttons):
                 self._make_button(self.canvas, text, cmd, bx, 195+i*52, bw, 42, c, hc)
 
-            self.canvas.create_text(430, 505, text="github.com/solis/mineline",
-                                    fill=C_TEXT_DARK, font=("Segoe UI", 8), anchor="center")
         self.screens["main"] = show
 
     def _show_popup_sp(self):
