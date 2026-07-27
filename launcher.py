@@ -687,13 +687,6 @@ except: pass
                                 anchor="center", tags="loading_hint")
         self._loading_job = self.root.after(500, self._animate_loading)
 
-    def _close_and_launch(self, watcher_path):
-        """Close launcher and launch game via watcher batch that reopens launcher on exit."""
-        if os.path.exists(watcher_path):
-            subprocess.Popen([watcher_path], shell=True, cwd=BASE_DIR)
-        self._save_config()
-        self.root.destroy()
-
     # ─── AUTO UPDATE ──────────────────────────────────
 
     UPDATE_CHECK_URL = "https://raw.githubusercontent.com/timmyt376/TerraForge/main/launcher_version.txt"
@@ -713,8 +706,8 @@ except: pass
                 self.update_check_done = True
                 is_newer = self._version_compare(remote_version, VERSION)
                 if is_newer:
-                    self.root.after(0, lambda: self._auto_update(remote_version))
-            except Exception:
+                    self.root.after(0, lambda v=remote_version: self._auto_update(v))
+            except Exception as e:
                 self.update_check_done = True
 
         threading.Thread(target=check, daemon=True).start()
@@ -728,7 +721,7 @@ except: pass
             return False
 
     def _auto_update(self, new_version):
-        """Auto-download and install update, then restart."""
+        """Show update screen and start download."""
         self._clear_container()
         self.canvas = tk.Canvas(self.container, width=854, height=520,
                                 highlightthickness=0, bg=C_BG)
@@ -737,66 +730,51 @@ except: pass
             r = int(13 + (y/520)*10)
             self.canvas.create_line(0, y, 854, y, fill=f"#{r:02x}{r:02x}{r*2:02x}")
 
-        self.canvas.create_text(430, 180, text="UPDATING", fill=C_GOLD,
+        self.canvas.create_text(430, 170, text="UPDATING", fill=C_GOLD,
             font=("Courier New", 32, "bold"), anchor="center")
-        self.canvas.create_text(430, 225,
+        self.canvas.create_text(430, 215,
             text=f"v{VERSION}  →  v{new_version}",
             fill=C_ACCENT, font=("Segoe UI", 16, "bold"), anchor="center")
 
-        self._update_status = self.canvas.create_text(430, 280,
-            text="Downloading...", fill=C_TEXT_DIM,
+        self._update_status = self.canvas.create_text(430, 270,
+            text="Checking for update...", fill=C_TEXT_DIM,
             font=("Segoe UI", 12), anchor="center")
 
-        # Progress bar (fake tkinter bar on canvas)
-        self.canvas.create_rectangle(277, 300, 577, 320,
+        # Progress bar background
+        self.canvas.create_rectangle(277, 300, 577, 318,
             fill="#252540", outline="#334")
-        self._update_bar = self.canvas.create_rectangle(277, 300, 277, 320,
+        self._update_bar = self.canvas.create_rectangle(277, 300, 277, 318,
             fill=C_GREEN, outline="")
-        self._update_pct = self.canvas.create_text(430, 340,
+        self._update_pct = self.canvas.create_text(430, 335,
             text="0%", fill=C_TEXT_DIM, font=("Segoe UI", 10), anchor="center")
 
-        # Start download in background
-        threading.Thread(target=lambda: self._download_and_install(
-            new_version, None, silent=True), daemon=True).start()
+        # Start download in background thread
+        self._update_version = new_version
+        threading.Thread(target=self._download_update, daemon=True).start()
 
-    def _show_update_dialog(self):
-        """Legacy — now update is automatic."""
-        if self.update_available:
-            self._auto_update(self.update_available)
-        else:
-            self._popup("Check Updates",
-                f"TerraForge v{VERSION}\n\nYou're on the latest version!")
-        dialog.grab_set()
+    def _update_ui(self, status_text, pct=None):
+        """Thread-safe UI update."""
+        self.root.after(0, lambda: self.canvas.itemconfig(self._update_status, text=status_text))
+        if pct is not None:
+            x = 277 + int(pct * 3)
+            self.root.after(0, lambda: self.canvas.coords(self._update_bar, 277, 300, x, 318))
+            self.root.after(0, lambda: self.canvas.itemconfig(self._update_pct, text=f"{pct}%"))
 
-    def _download_and_install(self, version, dialog=None, silent=False):
-        """Download update zip and install it."""
-        import zipfile
+    def _download_update(self):
+        """Download update zip and install it (background thread)."""
+        import zipfile, shutil
+        version = self._update_version
         dl_url = self.UPDATE_DL_URL.format(version)
         tmp_dir = os.path.join(BASE_DIR, ".update_temp")
         zip_path = os.path.join(tmp_dir, f"update_{version}.zip")
 
-        def status(msg):
-            if silent:
-                self.canvas.itemconfig(self._update_status, text=msg)
-            else:
-                self._update_status.config(text=msg)
-
-        def set_progress(pct):
-            if silent:
-                x = 277 + int(pct * 3)  # 300px wide bar
-                self.canvas.coords(self._update_bar, 277, 300, x, 320)
-                self.canvas.itemconfig(self._update_pct, text=f"{pct}%")
-                self.canvas.update()
-            else:
-                self._update_progress["value"] = pct
-
         try:
             os.makedirs(tmp_dir, exist_ok=True)
-            status(f"Downloading v{version}...")
+            self._update_ui(f"Downloading v{version}...")
 
             req = urllib.request.Request(dl_url, headers={
                 "User-Agent": f"TerraForgeLauncher/{VERSION}"})
-            with urllib.request.urlopen(req, timeout=60) as resp:
+            with urllib.request.urlopen(req, timeout=120) as resp:
                 total = int(resp.headers.get("Content-Length", 0))
                 downloaded = 0
                 with open(zip_path, "wb") as f:
@@ -807,32 +785,34 @@ except: pass
                         f.write(chunk)
                         downloaded += len(chunk)
                         if total > 0:
-                            pct = int(downloaded * 100 / total)
-                            set_progress(pct)
+                            self._update_ui(f"Downloading... {int(downloaded*100/total)}%",
+                                            int(downloaded*100/total))
+            self._update_ui("Installing update...")
 
-            # Extract
-            status("Installing update...")
+            # Extract zip
+            count = 0
             with zipfile.ZipFile(zip_path, "r") as zf:
                 members = zf.namelist()
+                # GitHub archive: first entry is the root folder
                 root_folder = members[0].split("/")[0] + "/"
                 for m in members:
                     rel = m[len(root_folder):] if m.startswith(root_folder) else m
-                    if not rel:
+                    if not rel or rel.endswith("/"):
                         continue
                     target = os.path.join(BASE_DIR, rel)
-                    if m.endswith("/"):
-                        os.makedirs(target, exist_ok=True)
-                    else:
-                        os.makedirs(os.path.dirname(target), exist_ok=True)
-                        with open(target, "wb") as f:
-                            f.write(zf.read(m))
+                    os.makedirs(os.path.dirname(target), exist_ok=True)
+                    with open(target, "wb") as f:
+                        f.write(zf.read(m))
+                    count += 1
 
+            self._update_ui(f"Updated {count} files! Restarting...")
+
+            # Write new version
             with open(os.path.join(BASE_DIR, "launcher_version.txt"), "w") as f:
                 f.write(version + "\n")
 
-            status("Update installed! Restarting...")
-
-            restart_bat = os.path.join(tmp_dir, "restart_launcher.bat")
+            # Create restart batch
+            restart_bat = os.path.join(tmp_dir, "restart.bat")
             launcher_path = os.path.join(BASE_DIR, "start_terraforge.bat")
             with open(restart_bat, "w") as f:
                 f.write(f"""@echo off
@@ -841,16 +821,24 @@ start "" "{launcher_path}"
 del "%~f0"
 """)
 
-            self.root.after(500, lambda: [
+            self.root.after(1000, lambda: [
+                shutil.rmtree(tmp_dir, ignore_errors=True),
                 self.root.destroy(),
                 subprocess.Popen([restart_bat], shell=True, cwd=tmp_dir)
             ])
 
         except Exception as e:
-            status(f"Update failed: {str(e)[:50]}")
-            import shutil
+            self._update_ui(f"Update failed: {str(e)[:60]}")
             shutil.rmtree(tmp_dir, ignore_errors=True)
-            self.root.after(2000, lambda: self.root.destroy())
+            self.root.after(3000, lambda: self.root.destroy())
+
+    def _show_update_dialog(self):
+        """Manual update check button."""
+        if self.update_available:
+            self._auto_update(self.update_available)
+        else:
+            self._popup("Check Updates",
+                f"TerraForge v{VERSION}\n\nYou're on the latest version!")
 
     def run(self):
         self.root.mainloop()
