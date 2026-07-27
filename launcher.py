@@ -462,7 +462,7 @@ class TerraForgeLauncher:
             if not success:
                 self._show_status_msg(result)
                 return
-            self._refresh_world_list()
+            self._show_screen("singleplayer")
             logging.info(f"World created: {name}")
             self._launch_game(name)
 
