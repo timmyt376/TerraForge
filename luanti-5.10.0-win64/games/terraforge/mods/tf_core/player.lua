@@ -1,4 +1,4 @@
--- tf_core: Player setup and HUD
+-- tf_core: Player setup, HUD, and chat commands
 
 local S = minetest.get_translator("tf_core")
 
@@ -9,42 +9,96 @@ minetest.register_on_newplayer(function(player)
     inv:set_size("craft", 9)
     inv:set_size("craftresult", 1)
 
-    -- Starter tools
     inv:add_item("main", "tf_core:pick_stone")
     inv:add_item("main", "tf_core:shovel_stone")
     inv:add_item("main", "tf_core:axe_stone")
     inv:add_item("main", "tf_core:sword_stone")
     inv:add_item("main", "tf_core:torch 16")
     inv:add_item("main", "tf_core:planks 16")
+    inv:add_item("main", "tf_core:bread 4")
 end)
 
--- Set player physics (Minecraft-like)
+-- HUD setup on join
 minetest.register_on_joinplayer(function(player)
     player:set_physics_override({
-        speed = 1.0,
-        jump = 1.0,
-        gravity = 1.0,
+        speed = 1.0, jump = 1.0, gravity = 1.0,
     })
     player:set_hp(20)
+
+    -- Crosshair
+    player:hud_add({
+        hud_elem_type = "image",
+        position = {x = 0.5, y = 0.5},
+        offset = {x = -8, y = -8},
+        text = "tf_core_crosshair.png",
+        scale = {x = 1, y = 1},
+        alignment = {x = 0, y = 0},
+    })
+
+    -- Health bar hearts
+    player:hud_add({
+        hud_elem_type = "statbar",
+        position = {x = 0.5, y = 0.96},
+        text = "tf_core_heart.png",
+        number = 20,
+        max = 20,
+        size = {x = 24, y = 24},
+        offset = {x = -124, y = 0},
+        alignment = {x = 0, y = 0},
+        direction = 0,
+    })
+
+    -- Hunger bar
+    player:hud_add({
+        hud_elem_type = "statbar",
+        position = {x = 0.5, y = 0.96},
+        text = "tf_core_hunger.png",
+        number = 20,
+        max = 20,
+        size = {x = 20, y = 20},
+        offset = {x = 124, y = 0},
+        alignment = {x = 0, y = 0},
+        direction = 0,
+    })
+
+    -- Experience bar background
+    player:hud_add({
+        hud_elem_type = "image",
+        position = {x = 0.5, y = 1},
+        text = "tf_core_exp_bar_bg.png",
+        scale = {x = 4, y = 1},
+        alignment = {x = 0, y = 0},
+        offset = {x = -146, y = -38},
+    })
+end)
+
+-- Update health/hunger HUD periodically
+minetest.register_globalstep(function(dtime)
+    for _, player in ipairs(minetest.get_connected_players()) do
+        local hp = player:get_hp()
+        local huds = player:hud_get_all() or {}
+        for _, hud in ipairs(huds) do
+            if hud.hud_elem_type == "statbar" then
+                if hud.position.y > 0.9 then  -- health/hunger bars
+                    if hud.offset.x < 0 then  -- left side = health
+                        player:hud_change(hud.id, "number", hp)
+                    end
+                end
+            end
+        end
+    end
 end)
 
 -- ========== GLOBAL DEFAULTS ==========
 
--- Set default game settings
 local settings = minetest.settings
 settings:set("mgv7_sparams", [[{
-    lacunarity = 2.0,
-    octaves = 6,
-    persistence = 0.5,
-    scale = 200.0,
-    spread = 300.0
+    lacunarity = 2.0, octaves = 6, persistence = 0.5,
+    scale = 200.0, spread = 300.0
 }]])
 settings:set_bool("enable_damage", true)
 settings:set_bool("creative_mode", false)
-settings:set("time_speed", "72") -- 20 min day/night cycle
-
--- Override chat prefix to be Minecraft-like
-settings:set("default_game", "minelike")
+settings:set("time_speed", "72")
 
 -- ========== CHAT COMMANDS ==========
 
@@ -80,4 +134,4 @@ minetest.register_chatcommand("gamemode", {
     end,
 })
 
-minetest.log("action", "[tf_core] Player setup loaded")
+minetest.log("action", "[tf_core] Player and HUD loaded")

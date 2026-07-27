@@ -225,3 +225,38 @@ minetest.register_craft({
 })
 
 minetest.log("action", "[tf_core] Crafting loaded")
+
+-- ========== FOOD SMELTING ==========
+
+minetest.register_craft({
+    type = "cooking",
+    output = "tf_core:porkchop_cooked",
+    recipe = "tf_core:porkchop_raw",
+    cooktime = 5,
+})
+minetest.register_craft({
+    type = "cooking",
+    output = "tf_core:beef_cooked",
+    recipe = "tf_core:beef_raw",
+    cooktime = 5,
+})
+minetest.register_craft({
+    type = "cooking",
+    output = "tf_core:chicken_cooked",
+    recipe = "tf_core:chicken_raw",
+    cooktime = 5,
+})
+minetest.register_craft({
+    type = "cooking",
+    output = "tf_core:mutton_cooked",
+    recipe = "tf_core:mutton_raw",
+    cooktime = 5,
+})
+
+-- Bread
+minetest.register_craft({
+    output = "tf_core:bread 2",
+    recipe = {
+        {"tf_core:planks", "tf_core:planks", "tf_core:planks"},
+    },
+})
