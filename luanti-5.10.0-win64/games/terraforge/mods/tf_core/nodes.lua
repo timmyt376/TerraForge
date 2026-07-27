@@ -1,5 +1,5 @@
 -- tf_core: All block (node) definitions
--- Minelike: Fully open Minecraft-like game
+-- TerraForge: Fully open Minecraft-like game
 
 local S = minetest.get_translator("tf_core")
 

@@ -2154,3 +2154,72 @@
 2026-07-27 22:42:56: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
 2026-07-27 22:42:56: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
 2026-07-27 22:42:56: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:44:59: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:45:00: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:45:00: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:45:00: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:45:00: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:63375.
+2026-07-27 22:45:00: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:45:00: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:45:00: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:45:00: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:45:00: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:45:10: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:45:10: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:45:10: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:45:10: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:45:10: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:60762.
+2026-07-27 22:45:10: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:45:10: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:45:10: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:45:10: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:45:10: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:45:24: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:45:24: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:45:24: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:45:24: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:45:24: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:56214.
+2026-07-27 22:45:24: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
