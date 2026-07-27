@@ -1,0 +1,75 @@
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 21:47:44: [Main]: Using game specified by --gameid on the command line
+2026-07-27 21:47:44: ERROR[Main]: Provided world path doesn't exist: luanti-5.10.0-win64/worlds/testworld
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 21:47:49: [Main]: Using game specified by --gameid on the command line
+2026-07-27 21:47:49: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 21:47:49: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_core] Player setup loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 21:47:49: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/testworld]
+2026-07-27 21:47:49: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:52621.
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_dirt.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_grass_top.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_grass_side.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_cobblestone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stonebrick.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_bedrock.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_sand.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_gravel.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tree_top.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tree_side.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_planks.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_leaves.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_sapling.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_ore_coal.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_ore_iron.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_ore_gold.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_stone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_ore_diamond.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_coal_block.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_iron_block.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_gold_block.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_diamond_block.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_crafting_top.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_crafting_side.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_furnace_top.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_furnace_side.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_furnace_front.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_furnace_front_active.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_chest_top.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_chest_side.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_chest_front.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_torch.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_water.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_glass.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_snow.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_ice.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_brick.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_bookshelf.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_dandelion.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_rose.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_pickstone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_shovelstone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_axestone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_swordstone.png" while building texture; Creating a dummy image
+2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_torch_inv.png" while building texture; Creating a dummy image

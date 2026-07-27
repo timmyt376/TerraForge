@@ -55,6 +55,9 @@ class TerraForgeLauncher:
         self.update_available = None
         self.update_check_done = False
 
+        # Ensure worlds directory exists
+        os.makedirs(WORLDS_DIR, exist_ok=True)
+
         self._build_ui()
         self._show_screen("main")
         self._check_for_updates_async()
