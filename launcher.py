@@ -8,7 +8,7 @@ import subprocess, os, json, random, glob
 import urllib.request, threading, logging, sys
 from datetime import datetime
 
-VERSION = "2.3.5"
+VERSION = "3.0.0"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
