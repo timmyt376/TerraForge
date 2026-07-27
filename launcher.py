@@ -8,7 +8,7 @@ import subprocess, os, json, random, glob
 import urllib.request, threading, logging, sys
 from datetime import datetime
 
-VERSION = "2.3.4"
+VERSION = "2.3.5"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
@@ -60,6 +60,7 @@ class TerraForgeLauncher:
 
         self.config = self._load_config()
         self.worlds_cache = []
+        self.game_process = None
         self.update_available = None
         self.update_check_done = False
 
@@ -168,15 +169,15 @@ class TerraForgeLauncher:
             logging.info(f"Launching: LUANTI_EXE={LUANTI_EXE}")
             logging.info(f"World: {wdir} exists: {os.path.exists(wdir)}")
 
-            # Write simple watcher batch: launch game, wait, reopen launcher
-            watcher = os.path.join(BASE_DIR, ".tf_launcher.bat")
-            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
-            fs = " --fullscreen" if self.config["window_mode"] == "fullscreen" else ""
-            with open(watcher, "w") as f:
-                f.write(f'@echo off\r\ncd /d "{LUANTI_DIR}"\r\n"luanti.exe" --gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}"{fs}\r\nstart "" "{launcher_bat}"\r\n')
-            subprocess.Popen(f'start "" "{watcher}"', shell=True)
-            logging.info(f"Game launching via watcher: {world_name}")
-            self.root.after(500, self.root.destroy)
+            # Launch game directly, minimize launcher — no batch files
+            self.game_process = subprocess.Popen(
+                [LUANTI_EXE, "--gameid", "terraforge", "--world", wdir, "--go",
+                 "--name", self.config["username"]],
+                cwd=LUANTI_DIR
+            )
+            logging.info(f"Game PID: {self.game_process.pid}")
+            self.root.iconify()
+            self.root.after(200, self._watch_game)
         except Exception as e:
             logging.error(f"Launch failed: {e}")
             messagebox.showerror("Launch Error", str(e))
@@ -629,6 +630,8 @@ class TerraForgeLauncher:
         msg.grab_set()
 
     def _quit(self):
+        if self.game_process:
+            self.game_process.terminate()
         self._save_config()
         self.root.destroy()
 
@@ -682,6 +685,17 @@ class TerraForgeLauncher:
                                 fill=C_TEXT_DARK, font=("Segoe UI", 10),
                                 anchor="center", tags="loading_hint")
         self._loading_job = self.root.after(500, self._animate_loading)
+
+    def _watch_game(self):
+        """Poll the game process. If it exits, restore launcher."""
+        if self.game_process and self.game_process.poll() is not None:
+            self.game_process = None
+            self.root.deiconify()
+            self._set_buttons_enabled(True)
+            self._show_screen("singleplayer")
+            logging.info("Game closed, launcher restored")
+        else:
+            self.root.after(500, self._watch_game)
 
     # ─── AUTO UPDATE ──────────────────────────────────
 
