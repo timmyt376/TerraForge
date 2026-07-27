@@ -106,6 +106,7 @@ dofile(modpath .. "/tools.lua")
 dofile(modpath .. "/crafting.lua")
 dofile(modpath .. "/furnace.lua")
 dofile(modpath .. "/armor.lua")
+dofile(modpath .. "/sounds.lua")
 dofile(modpath .. "/player.lua")
 
 minetest.log("action", "[tf_core] TerraForge core loaded")

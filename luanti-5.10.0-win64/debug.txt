@@ -2802,3 +2802,135 @@
 2026-07-28 00:30:45: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_loading]
 2026-07-28 00:30:45: ACTION[ServerStart]: Server for gameid="terraforge" listening on 0.0.0.0:30000.
 2026-07-28 00:30:45: ACTION[Server]: Test2 [127.0.0.1] joins game. List of players: Test2
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:41:10: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:41:11: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:41:11: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:41:11: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:41:11: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:41:11: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:41:11: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:41:11: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:41:11: ERROR[Main]: ModError: Failed to load and run script from C:\Users\timmy\projects\TerraForge\luanti-5.10.0-win64\bin\..\games\terraforge\mods\tf_core\init.lua:
+2026-07-28 00:41:11: ERROR[Main]: ....0-win64\bin\..\games\terraforge\mods\tf_core/sounds.lua:9: attempt to call field 'register_sound' (a nil value)
+2026-07-28 00:41:11: ERROR[Main]: stack traceback:
+2026-07-28 00:41:11: ERROR[Main]: 	....0-win64\bin\..\games\terraforge\mods\tf_core/sounds.lua:9: in main chunk
+2026-07-28 00:41:11: ERROR[Main]: 	[C]: in function 'dofile'
+2026-07-28 00:41:11: ERROR[Main]: 	...10.0-win64\bin\..\games\terraforge\mods\tf_core\init.lua:109: in main chunk
+2026-07-28 00:41:11: ERROR[Main]: Check debug.txt for details.
+2026-07-28 00:41:11: ACTION[ServerStop]: Server: Shutting down
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:41:11: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:41:12: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:41:12: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:41:12: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:41:12: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:41:12: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:41:12: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:41:12: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:41:12: ERROR[Main]: ModError: Failed to load and run script from C:\Users\timmy\projects\TerraForge\luanti-5.10.0-win64\bin\..\games\terraforge\mods\tf_core\init.lua:
+2026-07-28 00:41:12: ERROR[Main]: ....0-win64\bin\..\games\terraforge\mods\tf_core/sounds.lua:9: attempt to call field 'register_sound' (a nil value)
+2026-07-28 00:41:12: ERROR[Main]: stack traceback:
+2026-07-28 00:41:12: ERROR[Main]: 	....0-win64\bin\..\games\terraforge\mods\tf_core/sounds.lua:9: in main chunk
+2026-07-28 00:41:12: ERROR[Main]: 	[C]: in function 'dofile'
+2026-07-28 00:41:12: ERROR[Main]: 	...10.0-win64\bin\..\games\terraforge\mods\tf_core\init.lua:109: in main chunk
+2026-07-28 00:41:12: ERROR[Main]: Check debug.txt for details.
+2026-07-28 00:41:12: ACTION[ServerStop]: Server: Shutting down
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:41:32: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:41:32: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:41:32: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Sounds loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-28 00:41:32: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-28 00:41:33: WARNING[ServerStart]: /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:41:33: WARNING[ServerStart]: Switching to SQLite3 or PostgreSQL is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:41:33: WARNING[ServerStart]: /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:41:33: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:41:33: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_loading]
+2026-07-28 00:41:33: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:55247.
+2026-07-28 00:41:33: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_torch.png: Not enough image data
+2026-07-28 00:41:33: ERROR[Main]: Client: Cannot create image from data of file "tf_core_torch.png"
+2026-07-28 00:41:33: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_torch_inv.png: Not enough image data
+2026-07-28 00:41:33: ERROR[Main]: Client: Cannot create image from data of file "tf_core_torch_inv.png"
+2026-07-28 00:41:33: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_torch_inv.png: Not enough image data
+2026-07-28 00:41:33: ERROR[Main]: Client: Cannot create image from data of file "tf_core_torch_inv.png"
+2026-07-28 00:41:33: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_torch.png: Not enough image data
+2026-07-28 00:41:33: ERROR[Main]: Client: Cannot create image from data of file "tf_core_torch.png"
+2026-07-28 00:41:33: ERROR[Main]: generateImagePart(): Could not load image "tf_core_torch.png" while building texture; Creating a dummy image
+2026-07-28 00:41:33: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-28 00:41:33: ERROR[Main]: generateImagePart(): Could not load image "tf_core_torch_inv.png" while building texture; Creating a dummy image
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:42:01: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:42:01: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:42:01: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Sounds loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-28 00:42:01: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-28 00:42:01: WARNING[ServerStart]: /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:42:01: WARNING[ServerStart]: Switching to SQLite3 or PostgreSQL is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:01: WARNING[ServerStart]: /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:42:01: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:01: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_loading]
+2026-07-28 00:42:01: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:65524.
+2026-07-28 00:42:02: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:42:11: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:42:12: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:42:12: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Sounds loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-28 00:42:12: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-28 00:42:12: WARNING[ServerStart]: /!\ You are using old player file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:42:12: WARNING[ServerStart]: Switching to SQLite3 or PostgreSQL is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:12: WARNING[ServerStart]: /!\ You are using old auth file backend. This backend is deprecated and will be removed in a future release /!\
+2026-07-28 00:42:12: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:42:12: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_loading]
+2026-07-28 00:42:12: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:64497.
+2026-07-28 00:42:12: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer

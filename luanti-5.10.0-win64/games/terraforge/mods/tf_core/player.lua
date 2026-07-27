@@ -25,6 +25,27 @@ minetest.register_on_joinplayer(function(player)
     })
     player:set_hp(20)
 
+    -- Sky
+    player:set_sky({
+        base_color = "#4a8af0",
+        type = "skybox",
+        textures = {"tf_core_sky.png", "tf_core_sky.png", "tf_core_sky.png", "tf_core_sky.png", "tf_core_sky.png", "tf_core_sky.png"},
+        clouds = true,
+    })
+    player:set_clouds({
+        density = 0.4, color = "#ffffff",
+        height = 120, speed = {x=1, y=0, z=0.5},
+    })
+    player:set_stars({
+        visible = true, scale = 1.0, count = 1000,
+    })
+    player:set_sun({
+        visible = true, sun_size = 1.0,
+    })
+    player:set_moon({
+        visible = true, moon_size = 1.0,
+    })
+
     -- Crosshair
     player:hud_add({
         type = "image",
