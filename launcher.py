@@ -8,7 +8,7 @@ import subprocess, os, json, random, glob
 import urllib.request, threading, logging, sys
 from datetime import datetime
 
-VERSION = "2.3.1"
+VERSION = "2.3.2"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
@@ -814,8 +814,8 @@ class TerraForgeLauncher:
             with open(os.path.join(BASE_DIR, "launcher_version.txt"), "w") as f:
                 f.write(version + "\n")
 
-            # Create restart batch
-            restart_bat = os.path.join(tmp_dir, "restart.bat")
+            # Create restart batch in BASE_DIR (not tmp_dir — survives cleanup)
+            restart_bat = os.path.join(BASE_DIR, ".restart_terraforge.bat")
             launcher_path = os.path.join(BASE_DIR, "start_terraforge.bat")
             with open(restart_bat, "w") as f:
                 f.write(f"""@echo off
@@ -825,9 +825,9 @@ del "%~f0"
 """)
 
             self.root.after(1000, lambda: [
-                shutil.rmtree(tmp_dir, ignore_errors=True),
+                subprocess.Popen([restart_bat], shell=True, cwd=BASE_DIR),
                 self.root.destroy(),
-                subprocess.Popen([restart_bat], shell=True, cwd=tmp_dir)
+                shutil.rmtree(tmp_dir, ignore_errors=True),
             ])
 
         except Exception as e:
