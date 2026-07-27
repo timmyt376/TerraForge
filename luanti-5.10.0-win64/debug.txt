@@ -73,3 +73,227 @@
 2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_axestone.png" while building texture; Creating a dummy image
 2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_tool_swordstone.png" while building texture; Creating a dummy image
 2026-07-27 21:47:50: ERROR[Main]: generateImagePart(): Could not load image "tf_core_torch_inv.png" while building texture; Creating a dummy image
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:30:08: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:30:09: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:30:09: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:30:09: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:30:09: ERROR[Main]: ModError: Failed to load and run script from C:\Users\timmy\projects\TerraForge\luanti-5.10.0-win64\bin\..\games\terraforge\mods\tf_mobs\init.lua:
+2026-07-27 22:30:09: ERROR[Main]: ...rge\luanti-5.10.0-win64\bin\..\builtin\game\register.lua:66: Name tf_core:porkchop_raw does not follow naming conventions: "tf_mobs:" or ":" prefix required
+2026-07-27 22:30:09: ERROR[Main]: stack traceback:
+2026-07-27 22:30:09: ERROR[Main]: 	[C]: in function 'error'
+2026-07-27 22:30:09: ERROR[Main]: 	...rge\luanti-5.10.0-win64\bin\..\builtin\game\register.lua:66: in function 'check_modname_prefix'
+2026-07-27 22:30:09: ERROR[Main]: 	...rge\luanti-5.10.0-win64\bin\..\builtin\game\register.lua:136: in function 'register_item'
+2026-07-27 22:30:09: ERROR[Main]: 	...rge\luanti-5.10.0-win64\bin\..\builtin\game\register.lua:241: in function 'register_craftitem'
+2026-07-27 22:30:09: ERROR[Main]: 	...10.0-win64\bin\..\games\terraforge\mods\tf_mobs\init.lua:31: in main chunk
+2026-07-27 22:30:09: ERROR[Main]: Check debug.txt for details.
+2026-07-27 22:30:09: ACTION[ServerStop]: Server: Shutting down
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:30:25: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:30:25: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:30:25: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:30:25: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:30:25: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:60058.
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_arrow.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_arrow.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_beef_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_beef_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_beef_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_beef_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_bone.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_bone.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_bread.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_bread.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_chicken_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_chicken_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_chicken_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_chicken_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_crosshair.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_crosshair.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_exp_bar_bg.png: x[9C]c[B0]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_exp_bar_bg.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_feather.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_feather.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_heart.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_heart.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_hunger.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_hunger.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_leather.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_leather.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_mutton_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_mutton_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_mutton_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_mutton_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_porkchop_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_porkchop_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_porkchop_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_porkchop_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_rotten_flesh.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_rotten_flesh.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_wool.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_wool.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_mobs_spawn.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_mobs_spawn.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_wool.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_wool.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_rotten_flesh.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_rotten_flesh.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_porkchop_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_porkchop_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_mutton_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_mutton_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_hunger.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_hunger.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_crosshair.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_crosshair.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_mutton_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_mutton_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_feather.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_feather.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_chicken_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_chicken_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_exp_bar_bg.png: x[9C]c[B0]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_exp_bar_bg.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_bread.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_bread.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_mobs_spawn.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_mobs_spawn.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_heart.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_heart.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_chicken_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_chicken_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_leather.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_leather.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_beef_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_beef_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_bone.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_bone.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_beef_raw.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_beef_raw.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_porkchop_cooked.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_porkchop_cooked.png"
+2026-07-27 22:30:25: ERROR[Main]: Irrlicht: PNG fatal error for tf_core_arrow.png: x[9C]c[60]: invalid chunk type
+2026-07-27 22:30:25: ERROR[Main]: Client: Cannot create image from data of file "tf_core_arrow.png"
+2026-07-27 22:30:25: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:30:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:30:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:30:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:30:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+2026-07-27 22:30:26: ERROR[Main]: generateImagePart(): Could not load image "tf_core_crosshair.png" while building texture; Creating a dummy image
+2026-07-27 22:30:26: ERROR[Main]: generateImagePart(): Could not load image "tf_core_heart.png" while building texture; Creating a dummy image
+2026-07-27 22:30:26: ERROR[Main]: generateImagePart(): Could not load image "tf_core_hunger.png" while building texture; Creating a dummy image
+2026-07-27 22:30:26: ERROR[Main]: generateImagePart(): Could not load image "tf_core_exp_bar_bg.png" while building texture; Creating a dummy image
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:31:01: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:31:02: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:31:02: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:31:02: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:31:02: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:55802.
+2026-07-27 22:31:02: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:31:02: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:31:02: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:31:02: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:31:02: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:31:12: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:31:12: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:31:12: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:31:12: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:31:12: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:61153.
+2026-07-27 22:31:12: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:31:13: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:31:13: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:31:13: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:31:13: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:31:25: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:31:25: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:31:25: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:31:25: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:31:25: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:49447.
+2026-07-27 22:31:25: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:31:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:31:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:31:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:31:25: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:31:38: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:31:39: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:31:39: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:31:39: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:31:39: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:65374.
+2026-07-27 22:31:39: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:31:39: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:31:39: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:31:39: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:31:39: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)

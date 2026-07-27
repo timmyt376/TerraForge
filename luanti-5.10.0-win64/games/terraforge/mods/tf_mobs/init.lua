@@ -5,44 +5,6 @@ local S = minetest.get_translator("tf_mobs")
 
 -- ===== ITEMS (drops) =====
 
-local food_items = {
-    {"tf_core:porkchop_raw", "Raw Porkchop", 3},
-    {"tf_core:porkchop_cooked", "Cooked Porkchop", 8},
-    {"tf_core:beef_raw", "Raw Beef", 3},
-    {"tf_core:beef_cooked", "Steak", 8},
-    {"tf_core:chicken_raw", "Raw Chicken", 2},
-    {"tf_core:chicken_cooked", "Cooked Chicken", 6},
-    {"tf_core:mutton_raw", "Raw Mutton", 2},
-    {"tf_core:mutton_cooked", "Cooked Mutton", 6},
-    {"tf_core:rotten_flesh", "Rotten Flesh", 1},
-    {"tf_core:bone", "Bone", 0},
-    {"tf_core:feather", "Feather", 0},
-    {"tf_core:leather", "Leather", 0},
-    {"tf_core:wool", "Wool", 0},
-    {"tf_core:arrow", "Arrow", 0},
-}
-
-for _, item in ipairs(food_items) do
-    local name, desc, hunger = item[1], item[2], item[3]
-    local groups = {}
-    if hunger > 0 then
-        groups.food = hunger
-    end
-    minetest.register_craftitem(name, {
-        description = S(desc),
-        inventory_image = name:gsub(":", "_") .. ".png",
-        groups = groups,
-        on_use = hunger > 0 and function(itemstack, user)
-            local hp = user:get_hp()
-            if hp < 20 then
-                user:set_hp(math.min(hp + hunger, 20))
-                itemstack:take_item()
-            end
-            return itemstack
-        end or nil,
-    })
-end
-
 -- ===== MOB DEFINITIONS =====
 
 local mobs = {
