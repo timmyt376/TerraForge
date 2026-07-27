@@ -27,7 +27,7 @@ minetest.register_on_joinplayer(function(player)
 
     -- Crosshair
     player:hud_add({
-        hud_elem_type = "image",
+        type = "image",
         position = {x = 0.5, y = 0.5},
         offset = {x = -8, y = -8},
         text = "tf_core_crosshair.png",
@@ -37,7 +37,7 @@ minetest.register_on_joinplayer(function(player)
 
     -- Health bar hearts
     player:hud_add({
-        hud_elem_type = "statbar",
+        type = "statbar",
         position = {x = 0.5, y = 0.96},
         text = "tf_core_heart.png",
         number = 20,
@@ -50,7 +50,7 @@ minetest.register_on_joinplayer(function(player)
 
     -- Hunger bar
     player:hud_add({
-        hud_elem_type = "statbar",
+        type = "statbar",
         position = {x = 0.5, y = 0.96},
         text = "tf_core_hunger.png",
         number = 20,
@@ -63,7 +63,7 @@ minetest.register_on_joinplayer(function(player)
 
     -- Experience bar background
     player:hud_add({
-        hud_elem_type = "image",
+        type = "image",
         position = {x = 0.5, y = 1},
         text = "tf_core_exp_bar_bg.png",
         scale = {x = 4, y = 1},
@@ -77,11 +77,11 @@ minetest.register_globalstep(function(dtime)
     for _, player in ipairs(minetest.get_connected_players()) do
         local hp = player:get_hp()
         local huds = player:hud_get_all() or {}
-        for _, hud in ipairs(huds) do
-            if hud.hud_elem_type == "statbar" then
-                if hud.position.y > 0.9 then  -- health/hunger bars
-                    if hud.offset.x < 0 then  -- left side = health
-                        player:hud_change(hud.id, "number", hp)
+        for id, hud in pairs(huds) do
+            if hud.type == "statbar" then
+                if hud.position.y > 0.9 then
+                    if hud.offset.x < 0 then
+                        player:hud_change(id, "number", hp)
                     end
                 end
             end
