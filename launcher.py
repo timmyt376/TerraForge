@@ -8,7 +8,7 @@ import subprocess, os, json, random, glob
 import urllib.request, threading, logging, sys
 from datetime import datetime
 
-VERSION = "2.3.2"
+VERSION = "2.3.3"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
@@ -156,13 +156,6 @@ class TerraForgeLauncher:
             messagebox.showerror("Error", f"luanti.exe not found at:\n{LUANTI_EXE}")
             return
 
-        # Build Luanti config args
-        args = [LUANTI_EXE, "--gameid", "terraforge", "--world", wdir, "--go",
-                "--name", self.config["username"]]
-
-        if self.config["window_mode"] == "fullscreen":
-            args.append("--fullscreen")
-
         self._set_buttons_enabled(False)
         self._loading_world = world_name
         self._show_loading_screen(world_name)
@@ -177,10 +170,13 @@ class TerraForgeLauncher:
             if self.config["window_mode"] == "fullscreen":
                 args.append("--fullscreen")
 
-            subprocess.Popen(args, cwd=LUANTI_DIR,
-                             creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0)
+            logging.info(f"Launching: LUANTI_EXE={LUANTI_EXE}")
+            logging.info(f"Args: {' '.join(args)}")
+            logging.info(f"World exists: {os.path.exists(wdir)}")
+
+            subprocess.Popen(args, cwd=LUANTI_DIR)
             logging.info(f"Game launched: {world_name}")
-            self.root.after(1500, self.root.destroy)
+            self.root.after(3000, self.root.destroy)
         except Exception as e:
             logging.error(f"Launch failed: {e}")
             messagebox.showerror("Launch Error", str(e))
