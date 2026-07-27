@@ -5,11 +5,23 @@ TerraForge Launcher v2.1 — Minecraft-style menu with world management & settin
 import tkinter as tk
 from tkinter import ttk, font as tkfont, messagebox
 import subprocess, os, json, random, glob
-import urllib.request, threading
+import urllib.request, threading, logging, sys
+from datetime import datetime
 
 VERSION = "2.2"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
+
+# Setup logging
+logging.basicConfig(
+    filename=LOG_FILE, level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+logging.info(f"=== TerraForge Launcher v{VERSION} started ===")
+logging.info(f"Base dir: {BASE_DIR}")
+logging.info(f"Python: {sys.version}")
 LUANTI_DIR = os.path.join(BASE_DIR, "luanti-5.10.0-win64", "bin")
 LUANTI_EXE = os.path.join(LUANTI_DIR, "luanti.exe")
 LUANTI_ROOT = os.path.join(BASE_DIR, "luanti-5.10.0-win64")
@@ -167,8 +179,10 @@ class TerraForgeLauncher:
 
             subprocess.Popen(args, cwd=LUANTI_DIR,
                              creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0)
+            logging.info(f"Game launched: {world_name}")
             self.root.after(1500, self.root.destroy)
         except Exception as e:
+            logging.error(f"Launch failed: {e}")
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
             self._show_screen("singleplayer")
@@ -449,6 +463,7 @@ class TerraForgeLauncher:
                 self._show_status_msg(result)
                 return
             self._refresh_world_list()
+            logging.info(f"World created: {name}")
             self._launch_game(name)
 
         def create_only():
@@ -691,8 +706,10 @@ class TerraForgeLauncher:
                 self.update_check_done = True
                 is_newer = self._version_compare(remote_version, VERSION)
                 if is_newer:
+                    logging.info(f"Update available: v{VERSION} -> v{remote_version}")
                     self.root.after(0, lambda v=remote_version: self._auto_update(v))
             except Exception as e:
+                logging.warning(f"Update check failed: {e}")
                 self.update_check_done = True
 
         threading.Thread(target=check, daemon=True).start()
