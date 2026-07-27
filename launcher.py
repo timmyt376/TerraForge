@@ -7,7 +7,7 @@ from tkinter import ttk, font as tkfont, messagebox
 import subprocess, os, json, random, glob
 import urllib.request, threading
 
-VERSION = "1.01"
+VERSION = "1.0.06"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LUANTI_DIR = os.path.join(BASE_DIR, "luanti-5.10.0-win64", "bin")
