@@ -47,7 +47,6 @@ class TerraForgeLauncher:
         self.root.resizable(False, False)
 
         self.config = self._load_config()
-        self.process = None
         self.worlds_cache = []
         self.update_available = None
         self.update_check_done = False
@@ -156,15 +155,22 @@ class TerraForgeLauncher:
         self._show_loading_screen(world_name)
 
         try:
-            self.process = subprocess.Popen(
-                args, cwd=LUANTI_DIR,
-                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-            )
+            # Create a watcher batch: launches game, reopens launcher on exit
+            watcher = os.path.join(BASE_DIR, ".launch_watcher.bat")
+            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
+            args_str = f'--gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}"'
+            if self.config["window_mode"] == "fullscreen":
+                args_str += " --fullscreen"
+            with open(watcher, "w") as f:
+                f.write(f'''@echo off
+cd /d "{LUANTI_DIR}"
+start /wait "" luanti.exe {args_str}
+start "" "{launcher_bat}"
+del "%~f0"
+''')
             self.config["last_world"] = world_name
             self._save_config()
-            # Minimize launcher once game is running
-            self.root.after(1500, self._minimize_on_launch)
-            self.root.after(500, self._check_process)
+            self.root.after(1500, lambda: self._close_and_launch(watcher))
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
@@ -319,7 +325,7 @@ class TerraForgeLauncher:
 
             # Create New button
             self._make_button(self.canvas, "+  Create New World",
-                              self._show_create_dialog,
+                              self._show_create_world_screen,
                               277, 340, 300, 40, C_GREEN, C_GREEN_H, 12)
 
         self.screens["singleplayer"] = show
@@ -355,46 +361,60 @@ class TerraForgeLauncher:
                                  padx=15, pady=2, cursor="hand2")
             play_btn.pack(side="right", padx=(5,0))
 
-    # ─── CREATE WORLD DIALOG ───────────────────────────
+    # ─── CREATE WORLD SCREEN ────────────────────────
 
-    def _show_create_dialog(self):
-        dialog = tk.Toplevel(self.root)
-        dialog.title("Create New World")
-        dialog.configure(bg=C_BG2)
-        dialog.geometry("420x320")
-        dialog.resizable(False, False)
+    def _show_create_world_screen(self):
+        """Embedded Create World screen in the main window."""
+        self._clear_container()
+        self.canvas = tk.Canvas(self.container, width=854, height=520,
+                                highlightthickness=0, bg=C_BG)
+        self.canvas.pack(fill="both", expand=True)
+        self._draw_gradient(self.canvas, 854, 520)
+        self._draw_starfield(self.canvas, 854, 520)
 
-        x = self.root.winfo_x() + 217
-        y = self.root.winfo_y() + 100
-        dialog.geometry(f"+{x}+{y}")
+        # Back button
+        self._make_button(self.canvas, "← Back",
+                          lambda: self._show_screen("singleplayer"),
+                          20, 15, 70, 32, C_GREY, C_GREY_H, 10)
 
-        tk.Label(dialog, text="Create New World", fg=C_ACCENT, bg=C_BG2,
-                 font=("Segoe UI", 16, "bold")).pack(pady=(20,15))
+        # Title
+        self.canvas.create_text(430, 65, text="Create New World",
+                                fill=C_ACCENT, font=("Segoe UI", 22, "bold"),
+                                anchor="center")
 
-        # Name
-        tk.Label(dialog, text="World Name:", fg=C_TEXT_DIM, bg=C_BG2,
-                 font=("Segoe UI", 11)).pack(anchor="w", padx=40)
+        # Form frame embedded on canvas
+        form = tk.Frame(self.canvas, bg=C_BG2, highlightbackground="#334",
+                        highlightthickness=1)
+        self.canvas.create_window(430, 250, window=form, anchor="center",
+                                  width=450, height=300)
+
+        # World Name
+        tk.Label(form, text="World Name:", fg=C_TEXT_DIM, bg=C_BG2,
+                 font=("Segoe UI", 12)).grid(row=0, column=0, sticky="w",
+                                             padx=(30,10), pady=(25,5))
         name_var = tk.StringVar(value="New World")
-        name_entry = tk.Entry(dialog, textvariable=name_var, bg=C_BG3, fg=C_TEXT,
-                              font=("Segoe UI", 11), insertbackground=C_TEXT,
-                              relief="flat", bd=3)
-        name_entry.pack(fill="x", padx=40, pady=(0,8))
+        name_entry = tk.Entry(form, textvariable=name_var, bg=C_BG3, fg=C_TEXT,
+                              font=("Segoe UI", 12), insertbackground=C_TEXT,
+                              relief="flat", bd=3, width=30)
+        name_entry.grid(row=0, column=1, sticky="ew", padx=(0,30), pady=(25,5))
 
         # Seed
-        tk.Label(dialog, text="Seed (optional):", fg=C_TEXT_DIM, bg=C_BG2,
-                 font=("Segoe UI", 11)).pack(anchor="w", padx=40)
+        tk.Label(form, text="Seed (optional):", fg=C_TEXT_DIM, bg=C_BG2,
+                 font=("Segoe UI", 12)).grid(row=1, column=0, sticky="w",
+                                             padx=(30,10), pady=5)
         seed_var = tk.StringVar()
-        seed_entry = tk.Entry(dialog, textvariable=seed_var, bg=C_BG3, fg=C_TEXT,
-                              font=("Segoe UI", 11), insertbackground=C_TEXT,
-                              relief="flat", bd=3)
-        seed_entry.pack(fill="x", padx=40, pady=(0,8))
+        seed_entry = tk.Entry(form, textvariable=seed_var, bg=C_BG3, fg=C_TEXT,
+                              font=("Segoe UI", 12), insertbackground=C_TEXT,
+                              relief="flat", bd=3, width=30)
+        seed_entry.grid(row=1, column=1, sticky="ew", padx=(0,30), pady=5)
 
         # Game Mode
-        tk.Label(dialog, text="Game Mode:", fg=C_TEXT_DIM, bg=C_BG2,
-                 font=("Segoe UI", 11)).pack(anchor="w", padx=40)
+        tk.Label(form, text="Game Mode:", fg=C_TEXT_DIM, bg=C_BG2,
+                 font=("Segoe UI", 12)).grid(row=2, column=0, sticky="w",
+                                             padx=(30,10), pady=5)
         mode_var = tk.StringVar(value="survival")
-        mode_frame = tk.Frame(dialog, bg=C_BG2)
-        mode_frame.pack(fill="x", padx=40, pady=(0,15))
+        mode_frame = tk.Frame(form, bg=C_BG2)
+        mode_frame.grid(row=2, column=1, sticky="w", padx=(0,30), pady=5)
 
         for mode, label in [("survival", "Survival"), ("creative", "Creative")]:
             rb = tk.Radiobutton(mode_frame, text=label, variable=mode_var,
@@ -403,36 +423,50 @@ class TerraForgeLauncher:
                                 font=("Segoe UI", 11), cursor="hand2")
             rb.pack(side="left", padx=(0,20))
 
-        # Buttons
-        btn_frame = tk.Frame(dialog, bg=C_BG2)
-        btn_frame.pack(pady=10)
+        # Buttons row
+        btn_y = 330
+        self._make_button(self.canvas, "Cancel",
+                          lambda: self._show_screen("singleplayer"),
+                          277, btn_y, 130, 38, C_RED, C_RED_H, 12)
 
         def create():
             name = name_var.get().strip()
             if not name:
-                messagebox.showwarning("Name required", "Please enter a world name.")
+                self._show_status_msg("Please enter a world name.")
                 return
             seed = seed_var.get().strip()
             success, result = self._create_world(name, seed, mode_var.get())
             if not success:
-                messagebox.showerror("Error", result)
+                self._show_status_msg(result)
                 return
-            dialog.destroy()
             self._refresh_world_list()
             self._launch_game(name)
 
-        tk.Button(btn_frame, text="Cancel", command=dialog.destroy,
-                  bg=C_RED, fg="white", font=("Segoe UI", 11, "bold"),
-                  activebackground=C_RED_H, relief="flat", padx=20, pady=4,
-                  cursor="hand2").pack(side="left", padx=10)
+        def create_only():
+            """Create but don't play."""
+            name = name_var.get().strip()
+            if not name:
+                self._show_status_msg("Please enter a world name.")
+                return
+            seed = seed_var.get().strip()
+            success, result = self._create_world(name, seed, mode_var.get())
+            if not success:
+                self._show_status_msg(result)
+                return
+            self._show_screen("singleplayer")
 
-        tk.Button(btn_frame, text="Create & Play", command=create,
-                  bg=C_GREEN, fg="white", font=("Segoe UI", 11, "bold"),
-                  activebackground=C_GREEN_H, relief="flat", padx=20, pady=4,
-                  cursor="hand2").pack(side="left", padx=10)
+        self._make_button(self.canvas, "Create", create_only,
+                          417, btn_y, 130, 38, C_GREY, C_GREY_H, 12)
+        self._make_button(self.canvas, "Create & Play", create,
+                          277, btn_y + 48, 270, 38, C_GREEN, C_GREEN_H, 12)
 
-        dialog.transient(self.root)
-        dialog.grab_set()
+    def _show_status_msg(self, msg):
+        """Show a temporary status message on the current canvas."""
+        self.canvas.delete("status_msg")
+        self.canvas.create_text(430, 480, text=msg, fill=C_GOLD,
+                                font=("Segoe UI", 11), anchor="center",
+                                tags="status_msg")
+        self.root.after(3000, lambda: self.canvas.delete("status_msg"))
 
     # ─── SETTINGS SCREEN ───────────────────────────────
 
@@ -574,19 +608,7 @@ class TerraForgeLauncher:
         msg.transient(self.root)
         msg.grab_set()
 
-    def _check_process(self):
-        if self.process and self.process.poll() is not None:
-            self._set_buttons_enabled(True)
-            self.process = None
-            self.root.deiconify()  # Restore if minimized
-            self.root.lift()
-            self._show_screen("singleplayer")
-        else:
-            self.root.after(500, self._check_process)
-
     def _quit(self):
-        if self.process:
-            self.process.terminate()
         self._save_config()
         self.root.destroy()
 
@@ -630,7 +652,7 @@ class TerraForgeLauncher:
 
         self.canvas.delete("loading_dots")
         self.canvas.create_text(430, 270,
-                                text=f"Building world{dots}",
+                                text=f"Launching{dots}",
                                 fill=C_TEXT_DIM, font=("Segoe UI", 12),
                                 anchor="center", tags="loading_dots")
 
@@ -639,18 +661,14 @@ class TerraForgeLauncher:
                                 text="TerraForge will launch in a moment",
                                 fill=C_TEXT_DARK, font=("Segoe UI", 10),
                                 anchor="center", tags="loading_hint")
+        self._loading_job = self.root.after(500, self._animate_loading)
 
-        if self.process and self.process.poll() is None:
-            self._loading_job = self.root.after(500, self._animate_loading)
-
-    def _minimize_on_launch(self):
-        """Minimize the launcher window once the game is running."""
-        if self.process and self.process.poll() is None:
-            self.root.iconify()
-        elif self.process and self.process.poll() is not None:
-            # Process died already, show error
-            self.root.deiconify()
-            self._show_screen("singleplayer")
+    def _close_and_launch(self, watcher_path):
+        """Close launcher and launch game via watcher batch that reopens launcher on exit."""
+        if os.path.exists(watcher_path):
+            subprocess.Popen([watcher_path], shell=True, cwd=BASE_DIR)
+        self._save_config()
+        self.root.destroy()
 
     # ─── AUTO UPDATE ──────────────────────────────────
 
