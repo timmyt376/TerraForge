@@ -156,7 +156,7 @@ class TerraForgeLauncher:
             args.append("--fullscreen")
 
         self._set_buttons_enabled(False)
-        self._show_status(f"Starting TerraForge — {world_name}...")
+        self._show_loading_screen(world_name)
 
         try:
             self.process = subprocess.Popen(
@@ -165,11 +165,13 @@ class TerraForgeLauncher:
             )
             self.config["last_world"] = world_name
             self._save_config()
+            # Minimize launcher once game is running
+            self.root.after(1500, self._minimize_on_launch)
             self.root.after(500, self._check_process)
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
-            self._show_status("")
+            self._show_screen("singleplayer")
 
     # ─── UI BUILDING ───────────────────────────────────
 
@@ -578,8 +580,9 @@ class TerraForgeLauncher:
     def _check_process(self):
         if self.process and self.process.poll() is not None:
             self._set_buttons_enabled(True)
-            self._show_status("")
             self.process = None
+            self.root.deiconify()  # Restore if minimized
+            self.root.lift()
             self._show_screen("singleplayer")
         else:
             self.root.after(500, self._check_process)
@@ -589,6 +592,68 @@ class TerraForgeLauncher:
             self.process.terminate()
         self._save_config()
         self.root.destroy()
+
+    # ─── LOADING SCREEN ─────────────────────────────
+
+    def _show_loading_screen(self, world_name):
+        """Show a full loading overlay when launching a world."""
+        self._clear_container()
+        self.canvas = tk.Canvas(self.container, width=854, height=520,
+                                highlightthickness=0, bg=C_BG)
+        self.canvas.pack(fill="both", expand=True)
+
+        # Dark gradient
+        for y in range(520):
+            r = int(13 + (y / 520) * 10)
+            g = int(13 + (y / 520) * 8)
+            b = int(26 + (y / 520) * 8)
+            self.canvas.create_line(0, y, 854, y, fill=f"#{r:02x}{g:02x}{b:02x}")
+
+        # Loading text
+        self.canvas.create_text(430, 180, text="LOADING",
+                                fill=C_ACCENT, font=("Courier New", 36, "bold"),
+                                anchor="center")
+
+        # World name
+        self.canvas.create_text(430, 225, text=f'"{world_name}"',
+                                fill=C_TEXT_DIM, font=("Segoe UI", 14, "italic"),
+                                anchor="center")
+
+        # Animated dots
+        self._loading_dots = 0
+        self._loading_world = world_name
+        self._animate_loading()
+
+    def _animate_loading(self):
+        """Animate loading dots."""
+        if not hasattr(self, '_loading_dots'):
+            return
+        self._loading_dots = (self._loading_dots % 4) + 1
+        dots = "." * self._loading_dots
+
+        self.canvas.delete("loading_dots")
+        self.canvas.create_text(430, 270,
+                                text=f"Building world{dots}",
+                                fill=C_TEXT_DIM, font=("Segoe UI", 12),
+                                anchor="center", tags="loading_dots")
+
+        self.canvas.delete("loading_hint")
+        self.canvas.create_text(430, 320,
+                                text="TerraForge will launch in a moment",
+                                fill=C_TEXT_DARK, font=("Segoe UI", 10),
+                                anchor="center", tags="loading_hint")
+
+        if self.process and self.process.poll() is None:
+            self._loading_job = self.root.after(500, self._animate_loading)
+
+    def _minimize_on_launch(self):
+        """Minimize the launcher window once the game is running."""
+        if self.process and self.process.poll() is None:
+            self.root.iconify()
+        elif self.process and self.process.poll() is not None:
+            # Process died already, show error
+            self.root.deiconify()
+            self._show_screen("singleplayer")
 
     # ─── UPDATE CHECK ────────────────────────────────
 
