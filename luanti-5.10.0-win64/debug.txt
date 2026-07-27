@@ -2223,3 +2223,89 @@
 2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
 2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
 2026-07-27 22:45:24: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:53:32: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:53:33: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:53:33: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:53:33: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:53:33: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:59361.
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for default_furnace_fire_bg.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for default_furnace_fire_fg.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_gold.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_iron.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_leather.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_gold.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_iron.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_leather.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_gold.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_iron.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_leather.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_gold.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_iron.png: IDAT: Too much image data
+2026-07-27 22:53:33: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_leather.png: IDAT: Too much image data
+2026-07-27 22:53:33: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:53:33: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:53:33: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:53:33: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:53:33: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
+
+
+-------------
+  Separator
+-------------
+
+2026-07-27 22:53:41: [Main]: Using game specified by --gameid on the command line
+2026-07-27 22:53:41: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-27 22:53:41: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-27 22:53:41: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-27 22:53:41: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:57825.
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for default_furnace_fire_bg.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for default_furnace_fire_fg.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_gold.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_iron.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_boots_leather.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_gold.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_iron.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_chestplate_leather.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_gold.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_iron.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_helmet_leather.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_diamond.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_gold.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_iron.png: IDAT: Too much image data
+2026-07-27 22:53:41: WARNING[Main]: Irrlicht: PNG warning for tf_core_leggings_leather.png: IDAT: Too much image data
+2026-07-27 22:53:41: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+2026-07-27 22:53:41: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:29)
+2026-07-27 22:53:41: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:39)
+2026-07-27 22:53:41: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:52)
+2026-07-27 22:53:41: WARNING[Server]: Deprecated "hud_elem_type" field, use "type" instead. (at ....0-win64\bin\..\games\terraforge\mods\tf_core/player.lua:65)
