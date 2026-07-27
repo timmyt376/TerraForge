@@ -155,22 +155,32 @@ class TerraForgeLauncher:
         self._show_loading_screen(world_name)
 
         try:
-            # Create a watcher batch: launches game, reopens launcher on exit
-            watcher = os.path.join(BASE_DIR, ".launch_watcher.bat")
-            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
-            args_str = f'--gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}"'
-            if self.config["window_mode"] == "fullscreen":
-                args_str += " --fullscreen"
-            with open(watcher, "w") as f:
-                f.write(f'''@echo off
-cd /d "{LUANTI_DIR}"
-start /wait "" luanti.exe {args_str}
-start "" "{launcher_bat}"
-del "%~f0"
-''')
+            # Launch directly — no batch file needed
             self.config["last_world"] = world_name
             self._save_config()
-            self.root.after(1500, lambda: self._close_and_launch(watcher))
+
+            # Write a small Python watcher script
+            watcher = os.path.join(BASE_DIR, ".launch_watcher.py")
+            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
+            fullscreen_flag = self.config["window_mode"] == "fullscreen"
+            with open(watcher, "w") as f:
+                f.write(f"""import subprocess, os, sys, time
+base = os.path.dirname(os.path.abspath(__file__))
+luanti = os.path.join(base, "luanti-5.10.0-win64", "bin", "luanti.exe")
+wdir = r"{wdir}"
+args = [luanti, "--gameid", "terraforge", "--world", wdir, "--go",
+        "--name", "{self.config["username"]}"]
+if {"true" if fullscreen_flag else "False"}:
+    args.append("--fullscreen")
+subprocess.run(args, cwd=os.path.dirname(luanti))
+os.chdir(base)
+subprocess.Popen([r"{launcher_bat}"], shell=True)
+time.sleep(1)
+os.remove(__file__)
+""")
+            subprocess.Popen([sys.executable or "python3", watcher],
+                             cwd=BASE_DIR, shell=True)
+            self.root.after(500, self.root.destroy)
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
