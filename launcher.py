@@ -1,5 +1,5 @@
 """
-TerraForge Launcher v1.01 — Minecraft-style menu with world management & settings
+TerraForge Launcher v2.1 — Minecraft-style menu with world management & settings
 """
 
 import tkinter as tk
@@ -155,32 +155,24 @@ class TerraForgeLauncher:
         self._show_loading_screen(world_name)
 
         try:
-            # Launch directly — no batch file needed
             self.config["last_world"] = world_name
             self._save_config()
 
-            # Write a small Python watcher script
-            watcher = os.path.join(BASE_DIR, ".launch_watcher.py")
+            # Create watcher batch that: launches game, waits, reopens launcher
+            watcher = os.path.join(BASE_DIR, ".launch_watcher.bat")
             launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
             fullscreen_flag = self.config["window_mode"] == "fullscreen"
             with open(watcher, "w") as f:
-                f.write(f"""import subprocess, os, sys, time
-base = os.path.dirname(os.path.abspath(__file__))
-luanti = os.path.join(base, "luanti-5.10.0-win64", "bin", "luanti.exe")
-wdir = r"{wdir}"
-args = [luanti, "--gameid", "terraforge", "--world", wdir, "--go",
-        "--name", "{self.config["username"]}"]
-if {"true" if fullscreen_flag else "False"}:
-    args.append("--fullscreen")
-subprocess.run(args, cwd=os.path.dirname(luanti))
-os.chdir(base)
-subprocess.Popen([r"{launcher_bat}"], shell=True)
-time.sleep(1)
-os.remove(__file__)
+                f.write(f"""@echo off
+REM TerraForge launch watcher
+cd /d "{LUANTI_DIR}"
+"luanti.exe" --gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}" {"" if not fullscreen_flag else "--fullscreen"}
+start "" "{launcher_bat}"
+del "%~f0"
 """)
-            subprocess.Popen([sys.executable or "python3", watcher],
-                             cwd=BASE_DIR, shell=True)
-            self.root.after(500, self.root.destroy)
+            # Launch watcher, then close launcher
+            subprocess.Popen(f'start "" "{watcher}"', shell=True)
+            self.root.after(1000, self.root.destroy)
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
@@ -275,16 +267,30 @@ os.remove(__file__)
             self._draw_gradient(self.canvas, 854, 520)
             self._draw_starfield(self.canvas, 854, 520)
 
-            # Title
-            self.canvas.create_text(432, 82, text="MINELIKE", fill="#1a1a1a",
-                                    font=("Courier New", 52, "bold"), anchor="center")
-            self.canvas.create_text(430, 80, text="MINELIKE", fill=C_ACCENT,
-                                    font=("Courier New", 52, "bold"), anchor="center")
-            self.canvas.create_text(430, 125, text="~ Open Minecraft-like Game ~",
-                                    fill=C_TEXT_DIM, font=("Segoe UI", 11, "italic"),
+            # Title with shadow effect
+            self.canvas.create_text(432, 92, text="TERRAFORGE", fill="#1a1a1a",
+                                    font=("Courier New", 48, "bold"), anchor="center")
+            self.canvas.create_text(430, 90, text="TERRAFORGE", fill=C_ACCENT,
+                                    font=("Courier New", 48, "bold"), anchor="center")
+
+            # Tagline
+            self.canvas.create_text(430, 130, text="~ Open Voxel Sandbox ~",
+                                    fill=C_TEXT_DIM, font=("Segoe UI", 12, "italic"),
                                     anchor="center")
-            self.canvas.create_text(430, 148, text="v1.01 — Luanti Engine",
-                                    fill=C_TEXT_DARK, font=("Segoe UI", 9), anchor="center")
+
+            # Version badge
+            self.canvas.create_rectangle(370, 148, 490, 168,
+                                         fill="#252540", outline="#334")
+            self.canvas.create_text(430, 158,
+                                    text=f"v{VERSION}  |  Luanti Engine",
+                                    fill=C_TEXT_DIM, font=("Segoe UI", 9),
+                                    anchor="center")
+
+            # Bottom info
+            self.canvas.create_text(430, 500,
+                                    text="github.com/timmyt376/TerraForge",
+                                    fill=C_TEXT_DARK, font=("Segoe UI", 8),
+                                    anchor="center")
 
             # Buttons
             bx, bw = (854-280)//2, 280
