@@ -8,7 +8,7 @@ import subprocess, os, json, random, glob
 import urllib.request, threading, logging, sys
 from datetime import datetime
 
-VERSION = "2.3.3"
+VERSION = "2.3.4"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "terraforge_launcher.log")
@@ -165,18 +165,18 @@ class TerraForgeLauncher:
             self.config["last_world"] = world_name
             self._save_config()
 
-            args = [LUANTI_EXE, "--gameid", "terraforge", "--world", wdir, "--go",
-                    "--name", self.config["username"]]
-            if self.config["window_mode"] == "fullscreen":
-                args.append("--fullscreen")
-
             logging.info(f"Launching: LUANTI_EXE={LUANTI_EXE}")
-            logging.info(f"Args: {' '.join(args)}")
-            logging.info(f"World exists: {os.path.exists(wdir)}")
+            logging.info(f"World: {wdir} exists: {os.path.exists(wdir)}")
 
-            subprocess.Popen(args, cwd=LUANTI_DIR)
-            logging.info(f"Game launched: {world_name}")
-            self.root.after(3000, self.root.destroy)
+            # Write simple watcher batch: launch game, wait, reopen launcher
+            watcher = os.path.join(BASE_DIR, ".tf_launcher.bat")
+            launcher_bat = os.path.join(BASE_DIR, "start_terraforge.bat")
+            fs = " --fullscreen" if self.config["window_mode"] == "fullscreen" else ""
+            with open(watcher, "w") as f:
+                f.write(f'@echo off\r\ncd /d "{LUANTI_DIR}"\r\n"luanti.exe" --gameid terraforge --world "{wdir}" --go --name "{self.config["username"]}"{fs}\r\nstart "" "{launcher_bat}"\r\n')
+            subprocess.Popen(f'start "" "{watcher}"', shell=True)
+            logging.info(f"Game launching via watcher: {world_name}")
+            self.root.after(500, self.root.destroy)
         except Exception as e:
             logging.error(f"Launch failed: {e}")
             messagebox.showerror("Launch Error", str(e))
