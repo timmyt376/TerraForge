@@ -152,37 +152,22 @@ class TerraForgeLauncher:
             args.append("--fullscreen")
 
         self._set_buttons_enabled(False)
+        self._loading_world = world_name
         self._show_loading_screen(world_name)
+        self.root.update()
 
         try:
             self.config["last_world"] = world_name
             self._save_config()
 
-            # Write a tiny Python watcher: launch game, wait, reopen launcher
-            watcher = os.path.join(BASE_DIR, ".launch_watcher.py")
-            with open(watcher, "w") as f:
-                f.write(f"""import subprocess, os, sys, time
-base = os.path.dirname(os.path.abspath(__file__))
-luanti = os.path.join(base, "luanti-5.10.0-win64", "bin", "luanti.exe")
-args = [luanti, "--gameid", "terraforge", "--world", r"{wdir}", "--go", "--name", "{self.config["username"]}"]
-if {"true" if self.config["window_mode"] == "fullscreen" else "False"}:
-    args.append("--fullscreen")
-time.sleep(1.5)
-ret = subprocess.run(args, cwd=os.path.dirname(luanti))
-if ret.returncode != 0:
-    with open(os.path.join(base, "launcher_crash.log"), "w") as lf:
-        lf.write(f"Luanti exited with code {ret.returncode}\\n")
-subprocess.Popen([r"{os.path.join(BASE_DIR, 'start_terraforge.bat')}"], shell=True)
-time.sleep(0.5)
-try: os.remove(__file__)
-except: pass
-""")
-            # Launch watcher with pythonw to avoid console window
-            subprocess.Popen(
-                [sys.executable.replace("python.exe", "pythonw.exe") or "pythonw", watcher],
-                cwd=BASE_DIR, creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0
-            )
-            self.root.after(2000, self.root.destroy)
+            args = [LUANTI_EXE, "--gameid", "terraforge", "--world", wdir, "--go",
+                    "--name", self.config["username"]]
+            if self.config["window_mode"] == "fullscreen":
+                args.append("--fullscreen")
+
+            subprocess.Popen(args, cwd=LUANTI_DIR,
+                             creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, 'CREATE_NO_WINDOW') else 0)
+            self.root.after(1500, self.root.destroy)
         except Exception as e:
             messagebox.showerror("Launch Error", str(e))
             self._set_buttons_enabled(True)
