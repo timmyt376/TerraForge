@@ -2581,3 +2581,53 @@
 2026-07-28 00:04:28: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
 2026-07-28 00:04:28: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:63192.
 2026-07-28 00:04:28: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:05:01: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:05:02: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:05:02: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-28 00:05:02: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-28 00:05:02: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:50201.
+2026-07-28 00:05:02: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:05:26: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:05:26: ERROR[Main]: Provided world path doesn't exist: $(pwd)/luanti-5.10.0-win64/worlds/test_check
+
+
+-------------
+  Separator
+-------------
+
+2026-07-28 00:05:31: [Main]: Using game specified by --gameid on the command line
+2026-07-28 00:05:31: WARNING[ServerStart]: /!\ You are using the old mod storage files backend. This backend is deprecated and may be removed in a future release /!\
+2026-07-28 00:05:31: WARNING[ServerStart]: Switching to SQLite3 is advised, please read http://wiki.minetest.net/Database_backends.
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Nodes loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Tools loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Crafting loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Furnace loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Armor loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] Player and HUD loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_core] TerraForge core loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_world] World generation loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: [tf_mobs] Loaded
+2026-07-28 00:05:31: ACTION[ServerStart]: World at [C:/Users/timmy/projects/TerraForge/luanti-5.10.0-win64/worlds/test_check]
+2026-07-28 00:05:31: ACTION[ServerStart]: Server for gameid="terraforge" listening on 127.0.0.1:58361.
+2026-07-28 00:05:32: ACTION[Server]: singleplayer [127.0.0.1] joins game. List of players: singleplayer

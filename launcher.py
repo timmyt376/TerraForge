@@ -689,27 +689,28 @@ class TerraForgeLauncher:
 
     # ─── AUTO UPDATE ──────────────────────────────────
 
-    UPDATE_CHECK_URL = "https://raw.githubusercontent.com/timmyt376/TerraForge/main/launcher_version.txt"
-    UPDATE_DL_URL = "https://github.com/timmyt376/TerraForge/archive/refs/tags/v{}.zip"
+    UPDATE_CHECK_URL = "https://api.github.com/repos/timmyt376/TerraForge/releases/latest"
 
     def _check_for_updates_async(self):
-        """Auto-detect and install updates silently."""
+        """Fetch latest GitHub release and auto-update if newer."""
         def check():
             try:
                 req = urllib.request.Request(
                     self.UPDATE_CHECK_URL,
-                    headers={"User-Agent": f"TerraForgeLauncher/{VERSION}"}
+                    headers={"User-Agent": "TerraForgeLauncher/2.2.1", "Accept": "application/vnd.github+json"}
                 )
-                with urllib.request.urlopen(req, timeout=5) as resp:
-                    remote_version = resp.read().decode().strip()
-                self.update_available = remote_version
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    data = json.loads(resp.read())
+                tag = data.get("tag_name", "").lstrip("v")
+                dl_url = data.get("zipball_url", "")
+                self.update_available = tag
                 self.update_check_done = True
-                is_newer = self._version_compare(remote_version, VERSION)
-                if is_newer:
-                    logging.info(f"Update available: v{VERSION} -> v{remote_version}")
-                    self.root.after(0, lambda v=remote_version: self._auto_update(v))
+                if tag and dl_url and self._version_compare(tag, VERSION):
+                    self._dl_url = dl_url
+                    logging.info(f"Release detected: v{VERSION} -> v{tag}")
+                    self.root.after(0, lambda v=tag: self._auto_update(v))
             except Exception as e:
-                logging.warning(f"Update check failed: {e}")
+                logging.warning(f"Release check failed: {e}")
                 self.update_check_done = True
 
         threading.Thread(target=check, daemon=True).start()
@@ -766,7 +767,7 @@ class TerraForgeLauncher:
         """Download update zip and install it (background thread)."""
         import zipfile, shutil
         version = self._update_version
-        dl_url = self.UPDATE_DL_URL.format(version)
+        dl_url = getattr(self, '_dl_url', None) or 'https://github.com/timmyt376/TerraForge/archive/refs/tags/v' + version + '.zip'
         tmp_dir = os.path.join(BASE_DIR, ".update_temp")
         zip_path = os.path.join(tmp_dir, f"update_{version}.zip")
 
